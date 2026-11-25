@@ -49,7 +49,7 @@ export const en = {
     lede: 'I build immersive interfaces, intelligent products, and the systems behind them.',
     explore: 'Explore work',
     talk: 'Let’s talk',
-    nowLabel: 'Currently building',
+    nowLabel: 'Live Project',
     nowName: 'SADEEMAN AI',
     nowRest: ', an Arabic-first AI assistant with grounded research and voice',
     foot: 'Based in Egypt. Building in Arabic and English.',
