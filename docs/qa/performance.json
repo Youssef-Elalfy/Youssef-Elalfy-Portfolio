@@ -1,0 +1,99 @@
+{
+  "environment": "Headless Chrome on this machine; measured during local verification. Not a real-device guarantee.",
+  "frames": {
+    "frames": 239,
+    "seconds": 4.01210000000149,
+    "rafPerSecond": 59.56980135089137,
+    "longFrames": 0,
+    "maxFrameMs": 33.5
+  },
+  "runtime": {
+    "stats": {
+      "engine": "three.js r187",
+      "drawCalls": "35",
+      "triangles": "41106",
+      "measuredFps": "60"
+    },
+    "renderer": "ANGLE (Intel, Intel(R) UHD Graphics 630 (0x00003E9B) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "resolution": [
+      1280,
+      900
+    ],
+    "resources": [
+      {
+        "name": "/_next/static/chunks/webpack-0a62ce3c1808455c.js",
+        "bytes": 2144
+      },
+      {
+        "name": "/_next/static/chunks/4bd1b696-21f374d1156f834a.js",
+        "bytes": 54659
+      },
+      {
+        "name": "/_next/static/chunks/255-6a3064acda041a34.js",
+        "bytes": 46428
+      },
+      {
+        "name": "/_next/static/chunks/main-app-1fd1b01ecd9dea23.js",
+        "bytes": 855
+      },
+      {
+        "name": "/_next/static/chunks/1-c95e2f60d6480c05.js",
+        "bytes": 9047
+      },
+      {
+        "name": "/_next/static/chunks/63-a73f99371b7de208.js",
+        "bytes": 2749
+      },
+      {
+        "name": "/_next/static/chunks/app/page-81c942d2408e00c7.js",
+        "bytes": 11133
+      },
+      {
+        "name": "/_next/static/chunks/b536a0f1.eb1194062ec5efb1.js",
+        "bytes": 88592
+      },
+      {
+        "name": "/_next/static/chunks/bd904a5c.db54303232c8a55b.js",
+        "bytes": 103419
+      },
+      {
+        "name": "/_next/static/chunks/e49654ac.8e23fd599b62ff54.js",
+        "bytes": 52291
+      },
+      {
+        "name": "/_next/static/chunks/753.24e830e6dcfc3cb7.js",
+        "bytes": 6974
+      },
+      {
+        "name": "/_next/static/chunks/456.4b0e6bc4e48f8204.js",
+        "bytes": 6352
+      }
+    ]
+  },
+  "performanceMetrics": [
+    {
+      "name": "Nodes",
+      "value": 766
+    },
+    {
+      "name": "LayoutCount",
+      "value": 8
+    },
+    {
+      "name": "RecalcStyleCount",
+      "value": 13
+    },
+    {
+      "name": "ScriptDuration",
+      "value": 4.026043
+    },
+    {
+      "name": "TaskDuration",
+      "value": 5.594047
+    },
+    {
+      "name": "JSHeapUsedSize",
+      "value": 12207792
+    }
+  ]
+}

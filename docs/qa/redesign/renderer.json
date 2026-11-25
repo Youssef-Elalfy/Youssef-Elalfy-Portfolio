@@ -1,0 +1,75 @@
+{
+  "note": "Headless Chrome with SwiftShader; numbers describe this run only.",
+  "report": [
+    {
+      "width": 320,
+      "overflow": 0,
+      "canvas": {
+        "engine": "three.js r187",
+        "fps": "60",
+        "drawCalls": "17",
+        "triangles": "56358"
+      }
+    },
+    {
+      "width": 375,
+      "overflow": 0,
+      "canvas": {
+        "engine": "three.js r187",
+        "fps": "59",
+        "drawCalls": "17",
+        "triangles": "56358"
+      }
+    },
+    {
+      "width": 390,
+      "overflow": 0,
+      "canvas": {
+        "engine": "three.js r187",
+        "fps": "58",
+        "drawCalls": "17",
+        "triangles": "56358"
+      }
+    },
+    {
+      "width": 768,
+      "overflow": 0,
+      "canvas": {
+        "engine": "three.js r187",
+        "fps": "58",
+        "drawCalls": "17",
+        "triangles": "56358"
+      }
+    },
+    {
+      "width": 1024,
+      "overflow": 0,
+      "canvas": {
+        "engine": "three.js r187",
+        "fps": "59",
+        "drawCalls": "17",
+        "triangles": "56358"
+      }
+    },
+    {
+      "width": 1440,
+      "overflow": 0,
+      "canvas": {
+        "engine": "three.js r187",
+        "fps": "56",
+        "drawCalls": "17",
+        "triangles": "56358"
+      }
+    },
+    {
+      "width": 1920,
+      "overflow": 0,
+      "canvas": {
+        "engine": "three.js r187",
+        "fps": "56",
+        "drawCalls": "17",
+        "triangles": "56358"
+      }
+    }
+  ]
+}

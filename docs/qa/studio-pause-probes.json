@@ -1,0 +1,41 @@
+[
+  {
+    "run": 0,
+    "equal": true,
+    "drawsA": 13228,
+    "drawsB": 13228,
+    "changed": 0,
+    "bounds": {
+      "minX": 1440,
+      "minY": 1000,
+      "maxX": 0,
+      "maxY": 0
+    }
+  },
+  {
+    "run": 1,
+    "equal": true,
+    "drawsA": 13123,
+    "drawsB": 13123,
+    "changed": 0,
+    "bounds": {
+      "minX": 1440,
+      "minY": 1000,
+      "maxX": 0,
+      "maxY": 0
+    }
+  },
+  {
+    "run": 2,
+    "equal": true,
+    "drawsA": 11023,
+    "drawsB": 11023,
+    "changed": 0,
+    "bounds": {
+      "minX": 1440,
+      "minY": 1000,
+      "maxX": 0,
+      "maxY": 0
+    }
+  }
+]

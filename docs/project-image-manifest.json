@@ -1,0 +1,128 @@
+[
+  {
+    "source": "D:/My Works/Projects_Websites/sayntra/frontend/test-results/story/en-1440-stage1.png",
+    "output": "public/projects/sayntra/hero.webp",
+    "width": 1440,
+    "height": 900,
+    "bytes": 41346
+  },
+  {
+    "source": "D:/My Works/Projects_Websites/sayntra/frontend/test-results/story/en-1440-stage4.png",
+    "output": "public/projects/sayntra/story.webp",
+    "width": 1440,
+    "height": 900,
+    "bytes": 64244
+  },
+  {
+    "source": "D:/My Works/Projects_Websites/sayntra/frontend/test-results/story/ar-390-stage1.png",
+    "output": "public/projects/sayntra/mobile.webp",
+    "width": 390,
+    "height": 844,
+    "bytes": 16980
+  },
+  {
+    "source": "D:/My Works/UniFlow_Behance_Full_Case_Study_2026/UniFlow_Behance_Editorial_2026/assets/dashboard.webp",
+    "output": "public/projects/uniflow/hero.webp",
+    "width": 1600,
+    "height": 740,
+    "bytes": 44718
+  },
+  {
+    "source": "D:/My Works/UniFlow_Behance_Full_Case_Study_2026/UniFlow_Behance_Editorial_2026/assets/courses.webp",
+    "output": "public/projects/uniflow/courses.webp",
+    "width": 1600,
+    "height": 734,
+    "bytes": 37344
+  },
+  {
+    "source": "D:/My Works/UniFlow_Behance_Full_Case_Study_2026/UniFlow_Behance_Editorial_2026/assets/schedule.webp",
+    "output": "public/projects/uniflow/schedule.webp",
+    "width": 1600,
+    "height": 735,
+    "bytes": 39700
+  },
+  {
+    "source": "public/projects/uniflow/desktop-capture.png",
+    "output": "public/projects/uniflow/desktop.webp",
+    "width": 1440,
+    "height": 960,
+    "bytes": 33742
+  },
+  {
+    "source": "public/projects/uniflow/mobile-capture.png",
+    "output": "public/projects/uniflow/mobile.webp",
+    "width": 390,
+    "height": 844,
+    "bytes": 16470
+  },
+  {
+    "source": "D:/My Works/Projects_Websites/MerchantFlow_Real_Screenshots_For_Mohimtak/01_Real_Workspace_Dashboard.png",
+    "output": "public/projects/merchantflow/hero.webp",
+    "width": 1600,
+    "height": 730,
+    "bytes": 54808
+  },
+  {
+    "source": "D:/My Works/Projects_Websites/MerchantFlow_Real_Screenshots_For_Mohimtak/03_Noura_Fashion_Storefront.png",
+    "output": "public/projects/merchantflow/storefront.webp",
+    "width": 1600,
+    "height": 857,
+    "bytes": 46152
+  },
+  {
+    "source": "public/projects/merchantflow/desktop-capture.png",
+    "output": "public/projects/merchantflow/desktop.webp",
+    "width": 1440,
+    "height": 960,
+    "bytes": 45704
+  },
+  {
+    "source": "public/projects/merchantflow/mobile-capture.png",
+    "output": "public/projects/merchantflow/mobile.webp",
+    "width": 390,
+    "height": 844,
+    "bytes": 22920
+  },
+  {
+    "source": "public/projects/bella-tavola/desktop-capture.png",
+    "output": "public/projects/bella-tavola/hero.webp",
+    "width": 1440,
+    "height": 960,
+    "bytes": 103804
+  },
+  {
+    "source": "D:/My Works/Projects_Websites/Bella_Tavola_Real_Screenshots_For_Mohimtak/03_Interactive_Menu.png",
+    "output": "public/projects/bella-tavola/menu.webp",
+    "width": 1600,
+    "height": 742,
+    "bytes": 72420
+  },
+  {
+    "source": "public/projects/bella-tavola/mobile-capture.png",
+    "output": "public/projects/bella-tavola/mobile.webp",
+    "width": 390,
+    "height": 844,
+    "bytes": 46822
+  },
+  {
+    "source": "public/projects/nova-learning/dashboard-capture.png",
+    "output": "public/projects/nova-learning/hero.webp",
+    "width": 1440,
+    "height": 960,
+    "bytes": 62736
+  },
+  {
+    "source": "public/projects/nova-learning/desktop-capture.png",
+    "output": "public/projects/nova-learning/landing.webp",
+    "width": 1440,
+    "height": 960,
+    "bytes": 38664
+  },
+  {
+    "source": "public/projects/nova-learning/mobile-capture.png",
+    "output": "public/projects/nova-learning/mobile.webp",
+    "width": 390,
+    "height": 844,
+    "bytes": 25160
+  }
+]

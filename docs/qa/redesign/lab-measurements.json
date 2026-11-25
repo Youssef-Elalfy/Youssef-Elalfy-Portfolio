@@ -1,0 +1,44 @@
+{
+  "note": "Lab data from headless Chrome on one Windows machine (SwiftShader WebGL). Not field data and not a Lighthouse score.",
+  "vitals": [
+    {
+      "label": "desktop",
+      "width": 1440,
+      "height": 900,
+      "cpuThrottle": 1,
+      "lcpMs": 864,
+      "lcpElement": "img.portrait-photo",
+      "cls": 0.0038,
+      "longTasks": 4,
+      "blockingMsOver50": 958
+    },
+    {
+      "label": "mobile, 4x CPU throttle",
+      "width": 390,
+      "height": 844,
+      "cpuThrottle": 4,
+      "lcpMs": 652,
+      "lcpElement": "span.",
+      "cls": 0,
+      "longTasks": 7,
+      "blockingMsOver50": 1925
+    }
+  ],
+  "axe": [
+    {
+      "path": "/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "path": "/projects/masar-ai",
+      "width": 1440,
+      "violations": []
+    }
+  ]
+}

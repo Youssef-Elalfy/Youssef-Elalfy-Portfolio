@@ -1,0 +1,40 @@
+{
+  "renderer": "Headless Chrome; software GPU possible. Samples are observations, not a hardware FPS guarantee.",
+  "measurements": [
+    {
+      "width": 320,
+      "engine": "three.js r187",
+      "drawCalls": "14",
+      "triangles": "33962",
+      "measuredFps": "59"
+    },
+    {
+      "width": 390,
+      "engine": "three.js r187",
+      "drawCalls": "14",
+      "triangles": "33962",
+      "measuredFps": "37"
+    },
+    {
+      "width": 768,
+      "engine": "three.js r187",
+      "drawCalls": "31",
+      "triangles": "40218",
+      "measuredFps": "23"
+    },
+    {
+      "width": 1280,
+      "engine": "three.js r187",
+      "drawCalls": "34",
+      "triangles": "40914",
+      "measuredFps": "21"
+    },
+    {
+      "width": 1920,
+      "engine": "three.js r187",
+      "drawCalls": "36",
+      "triangles": "41362",
+      "measuredFps": "24"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "note": "Lab data from headless Chrome on one Windows machine (SwiftShader WebGL). Not field data and not a Lighthouse score.",
+  "vitals": [
+    {
+      "label": "desktop",
+      "path": "/",
+      "width": 1440,
+      "height": 900,
+      "cpuThrottle": 1,
+      "lcpMs": 1584,
+      "lcpElement": "span.",
+      "cls": 0.0023,
+      "longTasks": 7,
+      "blockingMsOver50": 3758
+    },
+    {
+      "label": "mobile, 4x CPU throttle",
+      "path": "/",
+      "width": 390,
+      "height": 844,
+      "cpuThrottle": 4,
+      "lcpMs": 4920,
+      "lcpElement": "img.portrait-photo",
+      "cls": 0.0007,
+      "longTasks": 12,
+      "blockingMsOver50": 7848
+    },
+    {
+      "label": "desktop, Arabic",
+      "path": "/ar",
+      "width": 1440,
+      "height": 900,
+      "cpuThrottle": 1,
+      "lcpMs": 1880,
+      "lcpElement": "img.portrait-photo",
+      "cls": 0.0017,
+      "longTasks": 8,
+      "blockingMsOver50": 1812
+    },
+    {
+      "label": "mobile Arabic, 4x CPU throttle",
+      "path": "/ar",
+      "width": 390,
+      "height": 844,
+      "cpuThrottle": 4,
+      "lcpMs": 2888,
+      "lcpElement": "span.",
+      "cls": 0.0002,
+      "longTasks": 21,
+      "blockingMsOver50": 12338
+    }
+  ],
+  "axe": [
+    {
+      "path": "/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "path": "/ar",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "path": "/ar",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "path": "/projects/uniflow",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "path": "/ar/projects/uniflow",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "path": "/ar/projects/masar-ai",
+      "width": 390,
+      "violations": []
+    }
+  ]
+}

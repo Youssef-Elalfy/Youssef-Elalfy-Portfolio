@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "merchantflow",
+    "url": "https://merchantflow-mu.vercel.app/",
+    "status": 200,
+    "title": "MerchantFlow — حوّل الشات لطلبات",
+    "captured": true
+  },
+  {
+    "slug": "uniflow",
+    "url": "https://uniflow-campus.vercel.app/",
+    "status": 200,
+    "title": "لوحة التحكم | UniFlow",
+    "captured": true
+  },
+  {
+    "slug": "bella-tavola",
+    "url": "https://italic-resturant.vercel.app/",
+    "status": 200,
+    "title": "Bella Tavola | Authentic & Modern Italian Dining",
+    "captured": true
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "errors": [],
+  "viewports": [
+    1440,
+    390
+  ],
+  "sections": [
+    "portfolio",
+    "services",
+    "about",
+    "contact",
+    "nova case study",
+    "mobile hero stage"
+  ]
+}
