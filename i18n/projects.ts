@@ -22,6 +22,7 @@ export function localizeProject(project: Project, locale: Locale): Project {
     image_note: ar.image_note,
     source_note: project.source_note ? ar.source_note ?? project.source_note : undefined,
     gallery: project.gallery?.map((image, index) => ({ ...image, alt: ar.gallery[index]?.alt ?? image.alt, caption: ar.gallery[index]?.caption ?? image.caption })),
+    film: project.film && { ...project.film, alt: ar.film?.alt ?? project.film.alt, caption: ar.film?.caption ?? project.film.caption },
   };
 }
 

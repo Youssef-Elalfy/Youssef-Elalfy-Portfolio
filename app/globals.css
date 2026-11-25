@@ -32,8 +32,9 @@
   --fs-h3: clamp(2.4rem, 5.2vw, 5.2rem);
   --fs-lede: clamp(1.1rem, 1.45vw, 1.35rem);
 
-  --shell: 1480px;
-  --gutter: clamp(20px, 5vw, 84px);
+  /* Fluid container: unchanged up to laptop widths, then it opens up on 2K, ultra-wide and 4K screens. */
+  --shell: clamp(1480px, 86vw, 3000px);
+  --gutter: clamp(20px, 4.6vw, 150px);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-swift: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -461,7 +462,7 @@ html[data-intro='show'] .site-nav { opacity: 0; transform: translateY(-18px); }
 .hero-now b { color: var(--ice); font-weight: 600; }
 @keyframes pulse { 50% { opacity: 0.35; } }
 
-.portrait { grid-column: 2; grid-row: 1 / 4; justify-self: end; position: relative; width: min(100%, 540px); perspective: 1400px; }
+.portrait { grid-column: 2; grid-row: 1 / 4; justify-self: end; position: relative; width: min(100%, clamp(540px, 30vw, 1000px)); perspective: 1400px; }
 .portrait-frame {
   position: relative;
   aspect-ratio: 4 / 5;
@@ -951,19 +952,30 @@ html:lang(ar) .intro-quiet { font-size: 0.95rem; letter-spacing: 0; text-transfo
 .not-found-copy + .not-found-copy { padding-top: 28px; border-top: 1px solid var(--line); }
 
 /* ---------- Scroll motion (lib/motion.ts) ----------
-   Hidden starting states apply only while html[data-motion='ready'] (set before paint, never
-   under reduced motion) and only until GSAP marks the element .is-revealed. The word mask is a
-   clip-path, not overflow, so it does not move the baseline; it is removed after the reveal so
-   heading text-shadows are never clipped. */
+   Hidden starting states apply only while html[data-motion='ready'] (set before paint, never under
+   reduced motion). GSAP's inline styles take over as soon as a reveal is bound, and reversible
+   reveals keep them, so these rules only cover the moment before hydration. The word mask is a
+   clip-path, not overflow, so it does not move the baseline; a settled heading drops it so its
+   text-shadow is never clipped. */
 .rw, .rw-i { display: inline-block; }
-html[data-motion='ready'] [data-reveal='words']:not(.is-revealed) .rw { clip-path: inset(-0.32em -0.14em -0.4em -0.14em); }
-html[data-motion='ready']:lang(ar) [data-reveal='words']:not(.is-revealed) .rw { clip-path: inset(-0.72em -0.16em -0.9em -0.16em); }
-html[data-motion='ready'] [data-reveal='words']:not(.is-revealed) .rw-i { opacity: 0; transform: translateY(135%); }
-html[data-motion='ready']:lang(ar) [data-reveal='words']:not(.is-revealed) .rw-i { transform: translateY(165%); }
-html[data-motion='ready'] [data-reveal='fade']:not(.is-revealed) { opacity: 0; transform: translateY(18px); }
-[data-reveal='media'] { will-change: clip-path; }
+.rw-line { unicode-bidi: isolate; }
+html[data-motion='ready'] [data-reveal='words']:not(.is-revealed):not(.is-settled) .rw { clip-path: inset(-0.32em -0.14em -0.4em -0.14em); }
+html[data-motion='ready']:lang(ar) [data-reveal='words']:not(.is-revealed):not(.is-settled) .rw { clip-path: inset(-0.72em -0.16em -0.9em -0.16em); }
+html[data-motion='ready'] [data-reveal='words']:not(.is-revealed) .rw-i { opacity: 0; transform: translateY(118%); }
+html[data-motion='ready']:lang(ar) [data-reveal='words']:not(.is-revealed) .rw-i { transform: translateY(150%); }
+html[data-motion='ready'] [data-reveal='fade']:not(.is-revealed) { opacity: 0; transform: translateY(30px); }
+html[data-motion='ready'] [data-reveal='stagger']:not(.is-revealed) > * { opacity: 0; transform: translateY(18px); }
+[data-reveal='media'] { will-change: clip-path, transform; }
 
 /* Client work */
 .status-client > span { background: #b9c9ff; box-shadow: 0 0 10px rgba(185, 201, 255, 0.75); }
 .client-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px 4px 8px; border-radius: 999px; font-size: 0.74rem; font-weight: 650; letter-spacing: 0.04em; text-transform: uppercase; color: #08100b; background: var(--lime); box-shadow: 0 0 22px -6px var(--lime); }
 html:lang(ar) .client-badge { letter-spacing: 0; text-transform: none; font-size: 0.8rem; }
+
+/* ---------- Large displays (2K, ultra-wide, 4K) ----------
+   Above 2000 CSS px the root size grows gently (16px → 22px), so type, spacing and rem-based
+   components scale together while ch-based measures keep paragraphs readable. Smaller screens
+   are untouched. */
+@media (min-width: 2000px) {
+  html { font-size: clamp(16px, calc(9px + 0.36vw), 22px); }
+}

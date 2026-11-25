@@ -54,15 +54,15 @@ function Exhibit({ project, index }: { project: Project; index: number }) {
         )}
       </div>
       <div className="exhibit-info">
-        <p className="exhibit-kicker">{project.client && <span className="client-badge"><BadgeCheck size={14} aria-hidden="true" />{t.clientBadge}</span>}<Aka value={project.aka} /><span>{project.category}</span></p>
+        <p className="exhibit-kicker" data-reveal="stagger">{project.client && <span className="client-badge"><BadgeCheck size={14} aria-hidden="true" />{t.clientBadge}</span>}<Aka value={project.aka} /><span>{project.category}</span></p>
         <RevealText as="h3" id={`exhibit-${project.slug}`} text={project.title} />
-        <p className="exhibit-tagline">{project.tagline}</p>
-        <p className="exhibit-desc">{project.description}</p>
-        <dl className="exhibit-facts">
+        <p className="exhibit-tagline" data-reveal="fade">{project.tagline}</p>
+        <p className="exhibit-desc" data-reveal="fade">{project.description}</p>
+        <dl className="exhibit-facts" data-reveal="stagger">
           <div><dt>{t.status}</dt><dd><StatusBadge status={project.status} labels={dict.status} /></dd></div>
           <div><dt>{t.myPart}</dt><dd>{project.role}</dd></div>
         </dl>
-        <ul className="stack" aria-label={t.technologies}>{project.technologies.slice(0, 8).map(tech => <li key={tech}>{tech}</li>)}</ul>
+        <ul className="stack" aria-label={t.technologies} data-reveal="stagger">{project.technologies.slice(0, 8).map(tech => <li key={tech}>{tech}</li>)}</ul>
         <div className="exhibit-actions">
           <Link className="btn btn-lime btn-sm" href={caseHref}>{t.caseStudy}</Link>
           {project.live_url && <a className="btn btn-glass btn-sm" href={project.live_url} target="_blank" rel="noopener noreferrer">{project.live_kind === 'website' ? t.liveWebsite : t.liveDemo} <ArrowUpRight size={15} aria-hidden="true" className="flip-rtl" /><span className="sr-only">{t.newTab}</span></a>}
@@ -156,7 +156,7 @@ export function WorkGallery({ projects, archived }: { projects: Project[]; archi
 
       {rest.length > 0 && (
         <div className="index">
-          <h3 className="index-heading">{t.moreBuilds}</h3>
+          <RevealText as="h3" className="index-heading" text={t.moreBuilds} />
           <ul>
             <AnimatePresence initial={false}>
               {rest.map(project => (
@@ -168,7 +168,7 @@ export function WorkGallery({ projects, archived }: { projects: Project[]; archi
       )}
 
       <div className="archive">
-        <h3 className="archive-heading">{t.archive}</h3>
+        <RevealText as="h3" className="archive-heading" text={t.archive} />
         <ul>
           {archived.map(project => (
             <li key={project.id}>

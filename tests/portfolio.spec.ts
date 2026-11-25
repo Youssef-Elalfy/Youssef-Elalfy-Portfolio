@@ -3,9 +3,9 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { en } from '../i18n/dictionaries/en';
 import { ar } from '../i18n/dictionaries/ar';
 
-const PRIMARY = ['NOCTURNE', 'PARALL / 01', 'SENSORA', 'SAYNTRA', 'MASAR AI', 'SADEEMAN AI', 'UniFlow Campus', 'MerchantFlow', 'Bella Tavola', 'Penguin Academy'];
-const ALL_SLUGS = ['nocturne', 'parall-01', 'sensora', 'masar-ai', 'sayntra', 'sadeeman-ai', 'merchantflow', 'uniflow', 'bella-tavola', 'penguin-academy', 'nova-learning', 'ai-labs', 'soleuxe', 'sakeena'];
-const WIDTHS: [number, number][] = [[320, 640], [360, 640], [375, 812], [390, 844], [430, 932], [768, 1024], [1024, 768], [1280, 720], [1440, 900], [1920, 1080]];
+const PRIMARY = ['NOCTURNE', 'PARALL / 01', 'SENSORA', 'EDUVERSE', 'SAYNTRA', 'MASAR AI', 'SADEEMAN AI', 'UniFlow Campus', 'MerchantFlow', 'Bella Tavola', 'Penguin Academy'];
+const ALL_SLUGS = ['nocturne', 'parall-01', 'sensora', 'eduverse', 'masar-ai', 'sayntra', 'sadeeman-ai', 'merchantflow', 'uniflow', 'bella-tavola', 'penguin-academy', 'nova-learning', 'ai-labs', 'soleuxe', 'sakeena'];
+const WIDTHS: [number, number][] = [[320, 640], [360, 640], [375, 812], [390, 844], [430, 932], [768, 1024], [1024, 768], [1280, 720], [1440, 900], [1920, 1080], [2560, 1440], [3440, 1440], [3840, 2160]];
 
 /** Returning-visitor state: the intro was already seen this session. */
 /** Waits until the page has hydrated and the scroll-motion module has bound its triggers. */
@@ -153,7 +153,7 @@ test('work gallery lists the primary projects in order, never the portfolio itse
   await page.goto('/#work');
   const work = page.locator('#work');
   for (const title of PRIMARY) await expect(work.getByRole('heading', { name: title, exact: true }).or(work.locator('.row-title', { hasText: title })).first()).toBeVisible();
-  await expect(work.locator('.exhibit h3')).toHaveText(['NOCTURNE', 'PARALL / 01', 'SENSORA', 'SAYNTRA', 'MASAR AI', 'SADEEMAN AI', 'UniFlow Campus', 'MerchantFlow']);
+  await expect(work.locator('.exhibit h3')).toHaveText(['NOCTURNE', 'PARALL / 01', 'SENSORA', 'EDUVERSE', 'SAYNTRA', 'MASAR AI', 'SADEEMAN AI', 'UniFlow Campus', 'MerchantFlow']);
   await expect(work).not.toContainText(/ELALFY Portfolio|Personal Portfolio/i);
   await expect(work).toContainText('Educational project');
   await expect(work).toContainText('Live application');
@@ -171,7 +171,7 @@ test('work gallery lists the primary projects in order, never the portfolio itse
   await expect(work.locator('.index-row')).toHaveCount(0);
 
   await work.getByRole('button', { name: /3D experiences/ }).click();
-  await expect(work.locator('.exhibit h3')).toHaveText(['PARALL / 01', 'SENSORA', 'SAYNTRA']);
+  await expect(work.locator('.exhibit h3')).toHaveText(['PARALL / 01', 'SENSORA', 'EDUVERSE', 'SAYNTRA']);
 
   await work.getByRole('button', { name: /Full-stack & AI/ }).click();
   await expect(work.locator('.exhibit h3')).toHaveText(['NOCTURNE', 'SAYNTRA', 'MASAR AI', 'SADEEMAN AI', 'UniFlow Campus', 'MerchantFlow']);
@@ -180,7 +180,7 @@ test('work gallery lists the primary projects in order, never the portfolio itse
   await expect(work.locator('.row-live').first()).toHaveAttribute('rel', 'noopener noreferrer');
 
   await work.getByRole('button', { name: /All projects/ }).click();
-  await expect(work.locator('.exhibit')).toHaveCount(8);
+  await expect(work.locator('.exhibit')).toHaveCount(9);
   await expect(work.locator('.index-row')).toHaveCount(2);
 });
 
@@ -205,6 +205,10 @@ test('verified live demos and public sources link to the right places', async ({
   await expectLink(/Open live demo/, 'https://parall-01.vercel.app/');
   await page.goto('/projects/sensora');
   await expectLink(/Open live demo/, 'https://sensora-cyan.vercel.app/en');
+  await page.goto('/projects/eduverse');
+  await expectLink(/Open live demo/, 'https://eduverse-delta-six.vercel.app/');
+  await page.goto('/ar/projects/eduverse');
+  await expect(page.getByRole('link', { name: /افتح النسخة الحيّة/ }).first()).toHaveAttribute('href', 'https://eduverse-delta-six.vercel.app/');
   await page.goto('/projects/nocturne');
   await expectLink(/Open live website/, 'https://nocturne.youssef-elalfly.workers.dev/');
   await expect(page.locator('main')).not.toContainText(/paid client build|client edits|deployment package|client handover|self-hosted package/i);
@@ -218,31 +222,50 @@ test('verified live demos and public sources link to the right places', async ({
   await expect(page.getByRole('link', { name: new RegExp(ar.caseStudy.source) })).toHaveAttribute('href', /masar-ai-agent/);
 });
 
-test('scroll reveals play once, survive scrolling back, anchor jumps and reloads, and are skipped under reduced motion', async ({ page, browser }) => {
+test('scroll reveals are reversible: complete while reading, reverse through the entry region, survive anchors and reloads', async ({ page, browser }) => {
   await skipIntro(page);
   await page.goto('/');
   await expect(page.locator('html')).toHaveAttribute('data-motion', 'ready');
   await waitForMotion(page);
-  // Jump straight past Work and Expertise to Contact, as an anchor link does.
-  await page.evaluate(() => document.querySelector('#contact')?.scrollIntoView());
-  await expect(page.locator('#contact-title')).toHaveClass(/is-revealed/);
-  await expect(page.locator('#expertise-title')).toHaveClass(/is-revealed/);
-  // Back to the top: reading text must not disappear again.
-  await page.evaluate(() => window.scrollTo(0, 0));
-  await page.waitForTimeout(400);
-  await expect(page.locator('#contact-title')).toHaveClass(/is-revealed/);
-  const opacities = await page.locator('#work-title .rw-i').evaluateAll(nodes => nodes.map(node => getComputedStyle(node).opacity));
-  expect(opacities.every(value => value === '1')).toBe(true);
-  // Reload mid-page: the heading in view reveals.
-  await page.evaluate(() => document.querySelector('#about')?.scrollIntoView({ behavior: 'instant' }));
-  await page.waitForTimeout(800);
+  // Puts the heading's top edge at a share of the viewport and returns its first word's opacity.
+  const place = async (selector: string, share: number) => {
+    await page.evaluate(({ selector, share }) => {
+      const el = document.querySelector(selector)!;
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - window.innerHeight * share, behavior: 'instant' });
+    }, { selector, share });
+    await page.waitForTimeout(900);
+    return Number(await page.locator(`${selector} .rw-i`).first().evaluate(node => getComputedStyle(node).opacity));
+  };
+  expect(await place('#about-title', 1.05)).toBeLessThan(0.05);            // before its window: hidden
+  const midway = await place('#about-title', 0.84);                        // inside the entry region: part-way
+  expect(midway).toBeGreaterThan(0.05); expect(midway).toBeLessThan(0.98);
+  expect(await place('#about-title', 0.4)).toBe(1);                         // reading position: complete
+  await expect(page.locator('#about-title')).toHaveClass(/is-settled/);
+  expect(await place('#about-title', -1)).toBe(1);                          // scrolled past: stays complete
+  const back = await place('#about-title', 0.84);                           // back up through the entry: reverses
+  expect(back).toBeLessThan(0.98);
+  expect(await place('#about-title', 1.05)).toBeLessThan(0.05);
+  expect(await place('#about-title', 0.4)).toBe(1);                         // down again: complete again
+
+  // An anchor jump straight to Contact completes the headings it lands on.
+  await page.evaluate(() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'instant' }));
+  await page.waitForTimeout(1200);
+  await expect(page.locator('#contact-title')).toHaveClass(/is-settled/);
+
+  // Reload mid-page: the heading in view is complete.
+  await place('#about-title', 0.4);
   await page.reload();
   await waitForMotion(page);
-  await expect(page.locator('#about-title')).toHaveClass(/is-revealed/, { timeout: 8000 });
+  await expect(page.locator('#about-title')).toHaveClass(/is-settled/, { timeout: 8000 });
+
   // Words are split on spaces only, so Arabic letters stay joined inside one span.
   await page.goto('/ar');
   const arabicWords = await page.locator('#work-title .rw-i').allTextContents();
   expect(arabicWords.join(' ')).toBe(ar.work.title);
+  // Latin titles keep their word order inside the Arabic layout.
+  const order = await page.locator('#work .exhibit h3', { hasText: 'MASAR' }).locator('.rw').evaluateAll(nodes => nodes.map(node => [node.textContent, node.getBoundingClientRect().left]));
+  expect(order[0][0]).toBe('MASAR');
+  expect(Number(order[0][1])).toBeLessThan(Number(order[1][1]));
 
   const reduced = await browser.newContext({ reducedMotion: 'reduce', baseURL: 'http://127.0.0.1:3300' });
   const calm = await reduced.newPage();
@@ -251,6 +274,31 @@ test('scroll reveals play once, survive scrolling back, anchor jumps and reloads
   await expect(calm.locator('html')).not.toHaveAttribute('data-motion', 'ready');
   await expect(calm.locator('#contact-title .rw-i').first()).toHaveCSS('opacity', '1');
   await reduced.close();
+});
+
+test('case study films load only near the viewport, autoplay muted inline, pause outside it and resume', async ({ page }) => {
+  await skipIntro(page);
+  const films: string[] = [];
+  page.on('request', request => { if (request.url().endsWith('film.mp4')) films.push(request.url()); });
+  await page.goto('/projects/eduverse');
+  await waitForMotion(page);
+  const video = page.locator('figure video');
+  await expect(video).toHaveAttribute('poster', '/projects/eduverse/film-poster.webp');
+  expect(await video.evaluate((v: HTMLVideoElement) => [v.muted, v.loop, v.playsInline, v.controls, v.preload])).toEqual([true, true, true, false, 'none']);
+  expect(films).toEqual([]);                                               // nothing downloaded at the top of the page
+  await video.evaluate(v => v.scrollIntoView({ block: 'center', behavior: 'instant' }));
+  await expect.poll(() => video.evaluate((v: HTMLVideoElement) => !v.paused && v.currentTime > 0.3), { timeout: 15000 }).toBe(true);
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+  await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.paused)).toBe(true);
+  await video.evaluate(v => v.scrollIntoView({ block: 'center', behavior: 'instant' }));
+  await expect.poll(() => video.evaluate((v: HTMLVideoElement) => !v.paused)).toBe(true);
+  // Every film file and poster exists and is served with the right type.
+  for (const slug of ['nocturne', 'parall-01', 'sensora', 'eduverse', 'sayntra', 'masar-ai', 'sadeeman-ai', 'merchantflow', 'bella-tavola']) {
+    const film = await page.request.head(`/projects/${slug}/film.mp4`);
+    expect(film.status(), slug).toBe(200);
+    expect(film.headers()['content-type'], slug).toContain('video/mp4');
+    expect((await page.request.head(`/projects/${slug}/film-poster.webp`)).status(), slug).toBe(200);
+  }
 });
 
 test('UniFlow appears under its verified full-stack skills, and Vercel is listed as hosting', async ({ page }) => {

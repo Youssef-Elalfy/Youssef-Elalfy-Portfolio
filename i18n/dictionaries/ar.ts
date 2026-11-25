@@ -192,6 +192,8 @@ export const ar: Dictionary = {
       dialog: '{title}، صورة مكبّرة',
       counter: '{title} — {n} من {total}',
       close: 'إغلاق',
+      filmPlay: 'شغّل تسجيل المشروع',
+      filmPause: 'أوقف تسجيل المشروع مؤقتًا',
       previous: 'اللقطة السابقة',
       next: 'اللقطة التالية',
     },

@@ -19,6 +19,18 @@ export interface ProjectImage {
   height: number;
 }
 
+/** A real 25–35 s recording of the project, shown inline in the case study gallery as a living screenshot. */
+export interface ProjectFilm {
+  video: string;
+  poster: string;
+  width: number;
+  height: number;
+  /** Placed after this many gallery images (1 = right after the main image). */
+  after: number;
+  alt: string;
+  caption: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -56,5 +68,6 @@ export interface Project {
   architecture?: string;
   challenges?: { title: string; solution: string }[];
   gallery?: ProjectImage[];
+  film?: ProjectFilm;
   image_note?: string;
 }

@@ -68,5 +68,26 @@
     "dir": "ltr",
     "overflow": 0,
     "clipped": []
+  },
+  {
+    "width": 2560,
+    "lang": "en",
+    "dir": "ltr",
+    "overflow": 0,
+    "clipped": []
+  },
+  {
+    "width": 3440,
+    "lang": "en",
+    "dir": "ltr",
+    "overflow": 0,
+    "clipped": []
+  },
+  {
+    "width": 3840,
+    "lang": "en",
+    "dir": "ltr",
+    "overflow": 0,
+    "clipped": []
   }
 ]

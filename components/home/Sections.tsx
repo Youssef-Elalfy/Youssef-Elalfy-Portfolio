@@ -52,7 +52,7 @@ export function ExpertiseSection({ locale }: { locale: Locale }) {
 
       <div className="offer" aria-labelledby="offer-title">
         <RevealText as="h3" id="offer-title" className="offer-title" text={t.offerTitle} />
-        <ul className="offer-list">
+        <ul className="offer-list" data-reveal="stagger">
           {t.offerings.map((item, index) => (
             <li key={item.title}>
               <h4>{item.title}</h4>
@@ -85,21 +85,21 @@ export function AboutSection({ locale }: { locale: Locale }) {
         <div className="about-copy">
           <RevealText as="h2" id="about-title" className="display about-title" text={t.title} />
           <p className="about-lead" data-reveal="fade">{t.lead}</p>
-          <p>{t.body}</p>
+          <p data-reveal="fade">{t.body}</p>
           <blockquote className="about-principle" data-reveal="fade">{t.principle}</blockquote>
 
           <div className="process" aria-labelledby="process-title">
-            <h3 id="process-title">{t.processTitle}</h3>
-            <ol>
+            <RevealText as="h3" id="process-title" text={t.processTitle} />
+            <ol data-reveal="stagger">
               {t.process.map((step, index) => (
                 <li key={step.title}><span className="step" aria-hidden="true">{index + 1}</span><b>{step.title}</b><p>{step.text}</p></li>
               ))}
             </ol>
           </div>
 
-          <p className="about-learning">{t.learning}</p>
+          <p className="about-learning" data-reveal="fade">{t.learning}</p>
 
-          <div className="about-links">
+          <div className="about-links" data-reveal="stagger">
             <a href={LINKS.github} target="_blank" rel="noopener noreferrer"><Github size={16} aria-hidden="true" /> GitHub</a>
             <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={16} aria-hidden="true" /> LinkedIn</a>
             <a href={LINKS.behance} target="_blank" rel="noopener noreferrer">Behance <ArrowUpRight size={14} aria-hidden="true" className="flip-rtl" /></a>
@@ -118,8 +118,8 @@ export function ContactSection({ locale }: { locale: Locale }) {
         <div className="contact-copy">
           <RevealText as="h2" id="contact-title" className="display contact-title" text={t.title} />
           <p className="section-lede" data-reveal="fade">{t.lede}</p>
-          <a className="contact-email" href={`mailto:${LINKS.email}`}><Mail size={20} aria-hidden="true" /><span dir="ltr">{LINKS.email}</span></a>
-          <ul className="contact-links">
+          <a data-reveal="fade" className="contact-email" href={`mailto:${LINKS.email}`}><Mail size={20} aria-hidden="true" /><span dir="ltr">{LINKS.email}</span></a>
+          <ul className="contact-links" data-reveal="stagger">
             <li><a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={16} aria-hidden="true" /> LinkedIn</a></li>
             <li><a href={LINKS.github} target="_blank" rel="noopener noreferrer"><Github size={16} aria-hidden="true" /> GitHub</a></li>
             <li><a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer"><MessageCircle size={16} aria-hidden="true" /> WhatsApp</a></li>

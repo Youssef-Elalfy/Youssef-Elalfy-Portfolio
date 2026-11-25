@@ -194,6 +194,8 @@ export const en = {
       dialog: '{title}, enlarged image',
       counter: '{title} — {n} of {total}',
       close: 'Close',
+      filmPlay: 'Play the project recording',
+      filmPause: 'Pause the project recording',
       previous: 'Previous screenshot',
       next: 'Next screenshot',
     },

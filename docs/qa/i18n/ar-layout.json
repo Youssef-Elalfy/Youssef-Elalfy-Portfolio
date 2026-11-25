@@ -68,5 +68,26 @@
     "dir": "rtl",
     "overflow": 0,
     "clipped": []
+  },
+  {
+    "width": 2560,
+    "lang": "ar",
+    "dir": "rtl",
+    "overflow": 0,
+    "clipped": []
+  },
+  {
+    "width": 3440,
+    "lang": "ar",
+    "dir": "rtl",
+    "overflow": 0,
+    "clipped": []
+  },
+  {
+    "width": 3840,
+    "lang": "ar",
+    "dir": "rtl",
+    "overflow": 0,
+    "clipped": []
   }
 ]

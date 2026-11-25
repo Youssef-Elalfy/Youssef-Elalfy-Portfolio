@@ -1,16 +1,17 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, X, ImageOff, Maximize2 } from 'lucide-react';
-import type { ProjectImage } from '@/types';
+import type { ProjectFilm, ProjectImage } from '@/types';
+import { InlineFilm } from './InlineFilm';
 import { useI18n } from '@/components/i18n/I18nProvider';
 import { format } from '@/i18n';
 import styles from './project.module.css';
 
-type Props = { images: ProjectImage[]; title: string; imageNote?: string; isDesignConcept?: boolean };
+type Props = { images: ProjectImage[]; title: string; imageNote?: string; isDesignConcept?: boolean; film?: ProjectFilm };
 
-export default function ProjectGallery({ images, title, imageNote, isDesignConcept = false }: Props) {
+export default function ProjectGallery({ images, title, imageNote, isDesignConcept = false, film }: Props) {
   const { dict, dir } = useI18n();
   const t = dict.caseStudy.gallery;
   const dialog = useRef<HTMLDialogElement>(null);
@@ -47,13 +48,17 @@ export default function ProjectGallery({ images, title, imageNote, isDesignConce
       {rest.length > 0 && (
         <div className={styles.thumbnails}>
           {rest.map((item, index) => (
-            <figure key={item.src}>
+            <Fragment key={item.src}>
+            {film && film.after === index + 1 && <InlineFilm film={film} />}
+            <figure>
               <button onClick={() => openImage(index + 1)} aria-label={format(t.enlargeAria, { alt: item.alt })} data-tall={item.height > item.width}>
                 <Image src={item.src} alt={item.alt} width={item.width} height={item.height} sizes="(max-width: 640px) 88vw, 400px" />
               </button>
               <figcaption>{item.caption}</figcaption>
             </figure>
+            </Fragment>
           ))}
+          {film && film.after > rest.length && <InlineFilm film={film} />}
         </div>
       )}
       <dialog

@@ -9,6 +9,7 @@ import { localePath } from '@/i18n/config';
 import { format } from '@/i18n';
 import type { Project } from '@/types';
 import { StatusBadge } from './StatusBadge';
+import { RevealText } from '@/components/motion/RevealText';
 
 /** The few project fields the evidence list needs, localized on the server. */
 export type EvidenceProject = Pick<Project, 'id' | 'slug' | 'title' | 'category' | 'status' | 'accent'>;
@@ -47,9 +48,9 @@ export function ExpertiseExplorer({ projects }: { projects: EvidenceProject[] })
       <div className="skill-groups">
         {skillGroups.map(group => (
           <section key={group.id} className="skill-group" aria-labelledby={`group-${group.id}`}>
-            <h3 id={`group-${group.id}`}>{pick(group.title, locale)}</h3>
-            <p>{pick(group.summary, locale)}</p>
-            <ul className="chips">
+            <RevealText as="h3" id={`group-${group.id}`} text={pick(group.title, locale)} />
+            <p data-reveal="fade">{pick(group.summary, locale)}</p>
+            <ul className="chips" data-reveal="stagger">
               {group.skills.map(skill => (
                 <li key={skill.id}>
                   <button type="button" aria-pressed={selected.id === skill.id} aria-controls="skill-evidence" onClick={() => setSelected(skill)}>
